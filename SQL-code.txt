@@ -1,0 +1,55 @@
+CREATE TABLE banks
+(
+  id PRIMARY KEY INTEGER NOT NULL,
+  name VARCHAR(50),
+  surname VARCHAR(20),
+  credits INTEGER,
+  balance INTEGER,
+);
+
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (1, 'Dima', 'Danilov', 1, 15000);
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (2, 'Alex', 'Orlov', 0, 1000);
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (3, 'Felix', 'Bogatirev', 20, 1000);
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (4, 'test123', 'dadadada', -125, 1000000);
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (5, 'Nikita', 'Poraev', 0, 1999000);
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (6, 'Simon', 'Poraev', 50, 0);
+
+
+sqlite> SELECT * from banks;
+
+5
+SELECT * FROM banks;
+SELECT name, surname, credits, balance FROM banks;
+
+6
+SELECT name, surname, credits, balance FROM banks ORDER BY balance DESC;
+SELECT name, surname, credits, balance FROM banks ORDER BY balance;
+7
+
+SELECT * FROM banks WHERE balance = 1000;
+8
+
+SELECT name, surname, credits, balance FROM banks WHERE surname = 'Poraev' and credits = 0;
+9
+INSERT INTO banks(id, name, surname, credits, balance) VALUES (7, 'Maksim', 'Krivolapov', 100, -100000000);
+10
+UPDATE banks Set balance = 0 WHERE name = 'Maksim';
+11
+SELECT COUNT(DISTINCT(surname)) FROM banks;
+Вывод - 6
+SELECT COUNT(*) FROM banks WHERE surname = 'Poraev';
+Вывод – 2
+12
+SELECT COUNT(*) FROM banks;
+Вывод - 7
+DELETE FROM banks WHERE id = 7;
+SELECT COUNT(*) FROM banks;
+Вывод - 6
+13
+SELECT * FROM banks
+1|Dima|Danilov|1|15000
+2|Alex|Orlov|0|1000
+3|Felix|Bogatirev|20|1000
+4|test123|dadadada|-125|1000000
+5|Nikita|Poraev|0|1999000
+6|Simon|Poraev|50|0
